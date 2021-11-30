@@ -1,1 +1,94 @@
 
+
+///Hash Table 
+
+//Global range for hash table 
+var maxNumberInHashTable = 10 ;
+
+
+// Global Hash Table with each row has two columns
+// Hash[row][0] for positive number
+//Hash[row][1] for negative number 
+
+//defining table with maxNumberInHashTable row 
+var Hash = new Array(maxNumberInHashTable+1) ;
+
+for( let i = 0 ; i < maxNumberInHashTable + 1 ; i++ ){
+
+    //defining each row in hash table two columns 
+    Hash[i] = new Array(2)
+
+    for( let j = 0 ; j < 2 ; j++ ){
+        //setting all default value as false 
+        Hash[i][j] = false ;
+    }
+
+    //default Hash table is ready 
+}
+
+console.log('your deafult hash table is : ')
+console.log(Hash)
+
+
+// insert function for Hash table 
+
+var insertingValuesInHashTableAndUpdatedingvalues = function (arr , n){
+    for( let i = 0 ; i < n ; i++ ){
+        if(arr[i] >= 0){
+            Hash[[arr[i]]][0] = true  
+        }
+        else{
+            const abs_arr_i = Math.abs(arr[i])
+            Hash[abs_arr_i][1] = true 
+        }
+    }
+}
+
+
+///search function for inserted value 
+
+const searchInsertedValue = (x) => {
+    if(x >= 0){
+        if( Hash[x][0] === true ){
+            return true 
+        }
+        else{
+            return false 
+        }
+    }
+    else{
+        const abs_x = Math.abs(x)      
+        if(Hash[abs_x][1] === true ){
+            return true 
+        }
+        else{
+            return false 
+        }
+    }
+}
+
+
+//array values will be inserted in hash table and 
+// hit to row number which is equal to inserted 
+// array element number and check if number is positive
+///then update inserted_number row's 1st column with true value 
+/// else update inserted_number row's 2nd column with true value
+///other row of hash table and columns will remain false 
+
+var arr = [-1, 9, -5, -8, -5, -2]
+
+insertingValuesInHashTableAndUpdatedingvalues(arr , arr.length)
+
+console.log('updated Hash Table')
+console.log(Hash)
+
+
+const x = -5
+
+//search given value present of not in Hash Table 
+///the function will return a value true/false
+//if returned value is true then given number 
+/// is present else return value is false then 
+//// given value is not present in Hash table 
+var z = searchInsertedValue(x) 
+console.log(z)
