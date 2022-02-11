@@ -9,14 +9,28 @@ Each Node Has Two Parts : 
 data -> we can store integer , string or any type of data inside data part.
 pointer -> reference to the next node connect one node to another 
 
-var head ;
+
 class Node{
-constructor(val){
-this.data = val ; this.next = null ;
+	constructor(val){
+		this.data = val 
+		this.next = null 
+	}
 }
+
+var head = new Node(1) 
+var second = new Node(3) 
+var third = new Node(5) 
+
+head.next = second 
+second.next = third 
+
+
+function printList(){
+	var n = head ;
+	while(n != null){
+		console.log(n.data) 
+		n = n.next 
+	}
 }
-var head = new Node(1)
-var second = new Node(2)
-var third = new Node(3) 
-head.next = second 
-second.next = third
+
+printList() 
